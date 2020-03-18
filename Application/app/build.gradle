@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "fr.kyllian.dronemanager"
+        applicationId "com.ulr.dronemanager"
         minSdkVersion 14
         targetSdkVersion 29
         versionCode 1

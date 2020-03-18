@@ -1,4 +1,4 @@
-package fr.kyllian.dronemanager;
+package com.ulr.dronemanager;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("fr.kyllian.dronemanager", appContext.getPackageName());
+        assertEquals("com.ulr.dronemanager", appContext.getPackageName());
     }
 }

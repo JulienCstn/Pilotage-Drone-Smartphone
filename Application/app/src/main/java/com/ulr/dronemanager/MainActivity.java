@@ -1,4 +1,4 @@
-package fr.kyllian.dronemanager;
+package com.ulr.dronemanager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
