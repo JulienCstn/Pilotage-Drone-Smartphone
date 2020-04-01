@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_automatic_driving">
+
+    <fragment
+        android:id="@+id/navigation_automatic_driving"
+        android:name="com.ulr.dronemanager.ui.automaticDriving.AutomaticDrivingFragment"
+        android:label="@string/title_automatic_driving"
+        tools:layout="@layout/fragment_automatic_driving" />
+
+    <fragment
+        android:id="@+id/navigation_manual_driving"
+        android:name="com.ulr.dronemanager.ui.manualDriving.ManualDrivingFragment"
+        android:label="@string/title_manual_driving"
+        tools:layout="@layout/fragment_manual_driving" />
+
+    <fragment
+        android:id="@+id/navigation_checkpoint_path"
+        android:name="com.ulr.dronemanager.ui.checkpointPath.CheckpointPathFragment"
+        android:label="@string/title_checkpoint_path"
+        tools:layout="@layout/fragment_checkpoint_path" />
+
+
+</navigation>
