@@ -24,6 +24,10 @@ public class Path {
     private ArrayList<Waypoint> waypoints;
     private Date dateOfCreation;
 
+    public Path() {
+
+    }
+
     public Path(String name, ArrayList<Waypoint> waypoints, Date date) {
         this.pathName = name;
         this.waypoints = new ArrayList<Waypoint>();;
