@@ -6,4 +6,5 @@
     <string name="title_checkpoint_path">Checkpoint</string>
     <string name="buttonStop">STOP</string>
     <string name="backFirstPoint">Go Back</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
