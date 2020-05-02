@@ -2,21 +2,21 @@ package com.ulr.dronemanager;
 
 public class Waypoint {
 
-    private float latitude;
-    private float longitude;
+    private double latitude;
+    private double longitude;
     private String cardinalité;
 
-    public Waypoint(float lat, float lon, String cardi) {
+    public Waypoint(double lat, double lon, String cardi) {
         this.latitude = lat;
         this.longitude = lon;
         this.cardinalité = cardi;
     }
 
-    public float getLatitude() {
+    public double getLatitude() {
         return this.latitude;
     }
 
-    public float getLongitude() {
+    public double getLongitude() {
         return this.longitude;
     }
 
@@ -24,11 +24,11 @@ public class Waypoint {
         return this.cardinalité;
     }
 
-    public void setLatitude(float lat) {
+    public void setLatitude(double lat) {
         this.latitude = lat;
     }
 
-    public void setLongitude(float lon) {
+    public void setLongitude(double lon) {
         this.longitude = lon;
     }
 
@@ -36,4 +36,12 @@ public class Waypoint {
         this.cardinalité = card;
     }
 
+    @Override
+    public String toString() {
+        return "Waypoint{" +
+                "latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", cardinalité='" + cardinalité + '\'' +
+                '}';
+    }
 }

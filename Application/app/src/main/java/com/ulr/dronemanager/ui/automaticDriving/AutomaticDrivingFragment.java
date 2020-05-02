@@ -1,6 +1,11 @@
 package com.ulr.dronemanager.ui.automaticDriving;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +18,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,12 +26,55 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.ulr.dronemanager.Path;
 import com.ulr.dronemanager.R;
 
 public class AutomaticDrivingFragment extends Fragment implements OnMapReadyCallback {
     private AutomaticDrivingViewModel automaticDrivingViewModel;
     SupportMapFragment supportMapFragment;
     private GoogleMap mMapA;
+    private Path pathReceive;
+
+    //permet la recup des données envoyé par le fragment checkpoint
+    private Path testPath;
+    Bundle extras;
+
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver()
+    {
+        @Override
+        public void onReceive(Context context, Intent intent)
+        {
+            if ("DATA_ACTION".equals(intent.getAction()) == true)
+            {
+                //Les données sont passées et peuvent être récupérées via :
+                //intent.getSerializableExtra("DATA_EXTRA");
+                //intent.getIntExtra("DATA_EXTRA", 2);
+                extras = intent.getExtras(); // recup des extras
+                //recuperations des donnees dans l'extras
+                String test = extras.getString("DATA_EXTRA");
+                if (test!=null){
+
+                   System.out.println("text: "+test);
+                }
+
+
+            }
+        }
+    };
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        //LocalBroadcastManager.getInstance(getContext()).registerReceiver(broadcastReceiver, new IntentFilter("DATA_ACTION"));
+    }
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+       // LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(broadcastReceiver);
+    }
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

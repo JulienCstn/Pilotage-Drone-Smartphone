@@ -19,4 +19,11 @@
         android:id="@+id/map"
 
         tools:context=".MapsActivity"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonSendPath"
+        android:text="Send Path"
+        android:layout_gravity="bottom|center"
+        />
 </FrameLayout>

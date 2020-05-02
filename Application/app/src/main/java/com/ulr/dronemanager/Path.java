@@ -24,9 +24,13 @@ public class Path {
     private ArrayList<Waypoint> waypoints;
     private Date dateOfCreation;
 
+    public Path() {
+        this.waypoints = new ArrayList<Waypoint>();
+    }
+
     public Path(String name, ArrayList<Waypoint> waypoints, Date date) {
         this.pathName = name;
-        this.waypoints = new ArrayList<Waypoint>();;
+        this.waypoints = new ArrayList<Waypoint>();
         this.dateOfCreation = date;
     }
 
@@ -96,8 +100,16 @@ public class Path {
         }
     }
 
-    private String toString(float unFloat) {
-        return toString(unFloat);
+    private String toString(double unDouble) {
+        return toString(unDouble);
     }
 
+    @Override
+    public String toString() {
+        return "Path{" +
+                "pathName='" + pathName + '\'' +
+                ", waypoints=" + waypoints +
+                ", dateOfCreation=" + dateOfCreation +
+                '}';
+    }
 }
