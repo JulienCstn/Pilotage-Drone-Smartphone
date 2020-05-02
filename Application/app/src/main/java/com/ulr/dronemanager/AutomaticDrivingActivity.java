@@ -7,7 +7,7 @@ public class AutomaticDrivingActivity {
     private DroneNetwork myDroneNetwork;
     private Path myPath;
 
-    public AutomaticDrivingActivity(DroneNetwork myDroneNetwork, Path myPath)
+    public AutomaticDrivingActivity(DroneNetwork myDroneNetwork, Path myPath){
         this.myDroneNetwork = myDroneNetwork;
         this.myPath = myPath;
     }
