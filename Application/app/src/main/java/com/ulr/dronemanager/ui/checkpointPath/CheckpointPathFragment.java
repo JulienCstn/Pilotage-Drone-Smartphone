@@ -47,7 +47,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 public class CheckpointPathFragment extends Fragment implements OnMapReadyCallback {
-    private CheckpointPathViewModel checkpointPathViewModel;
+
 
     SupportMapFragment supportMapFragment;
     private GoogleMap mMap;
@@ -62,7 +62,7 @@ public class CheckpointPathFragment extends Fragment implements OnMapReadyCallba
     public View onCreateView(@NonNull LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        checkpointPathViewModel = ViewModelProviders.of(this).get(CheckpointPathViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_checkpoint_path, container, false);
 
         pathToFollow = new Path();
@@ -178,7 +178,7 @@ public class CheckpointPathFragment extends Fragment implements OnMapReadyCallba
 
         Path loadedPath = new Path(name, waypoints, null);
         this.pathToFollow = loadedPath;
-        //TODO a verifier si c'est bien ce que voulais renvoyer kylian
+
         return this.pathToFollow;
     }
 

@@ -19,4 +19,18 @@
         android:id="@+id/map"
 
         tools:context=".MapsActivity"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonConnexionSimulateur"
+        android:text="Connexion NMEA"
+        android:layout_gravity="bottom|left"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonGoBack"
+        android:text="Go Back"
+        android:layout_gravity="bottom|center"
+        />
 </FrameLayout>

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,19 +27,27 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.ulr.dronemanager.AutomaticDriving;
+import com.ulr.dronemanager.ClientNMEA;
+import com.ulr.dronemanager.MainActivity;
 import com.ulr.dronemanager.Path;
 import com.ulr.dronemanager.R;
 
 public class AutomaticDrivingFragment extends Fragment implements OnMapReadyCallback {
-    private AutomaticDrivingViewModel automaticDrivingViewModel;
+
     SupportMapFragment supportMapFragment;
     private GoogleMap mMapA;
     private Path pathReceive;
 
+    private Button buttonGoBack;
+    private Button buttonConnexionSimulateur;
+    private AutomaticDriving monDroneAuto = new AutomaticDriving();
+
     //permet la recup des données envoyé par le fragment checkpoint
     private Path testPath;
     Bundle extras;
-
+    //BroadCast qui recuperes larraylist de point des checkpointFragment
+    //et doit servir a afficher le trace de celui-ci
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver()
     {
         @Override
@@ -53,11 +62,8 @@ public class AutomaticDrivingFragment extends Fragment implements OnMapReadyCall
                 //recuperations des donnees dans l'extras
                 String test = extras.getString("DATA_EXTRA");
                 if (test!=null){
-
                    System.out.println("text: "+test);
                 }
-
-
             }
         }
     };
@@ -79,16 +85,35 @@ public class AutomaticDrivingFragment extends Fragment implements OnMapReadyCall
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        automaticDrivingViewModel = ViewModelProviders.of(this).get(AutomaticDrivingViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_automatic_driving, container, false);
 
-        /*final TextView textView = root.findViewById(R.id.text_checkpointPath);
-        checkpointPathViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });*/
+        buttonGoBack = root.findViewById(R.id.buttonGoBack);
+        buttonConnexionSimulateur = root.findViewById(R.id.buttonConnexionSimulateur);
+
+        if (buttonGoBack != null){
+            buttonGoBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    monDroneAuto.goBackToFirstPoint();
+                    System.out.println("GO BACK!!!!!!!!");
+
+                }
+            });
+        }
+        //lors du clique sur le bouton conenxion on demande ClientNMEA
+        // de se conencter au simulateur et recuperer les trames
+        if (buttonConnexionSimulateur != null){
+            buttonConnexionSimulateur.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    System.out.println("SIMULATEUR NMEA:");
+                    Intent intent = new Intent(view.getContext(), ClientNMEA.class);
+                    startActivity(intent);
+                }
+            });
+        }
+        //Gestion du fragment MAP
         supportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         if(supportMapFragment == null){
 
