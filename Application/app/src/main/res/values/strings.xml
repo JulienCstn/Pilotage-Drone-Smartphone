@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">DroneManager</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_automatic_driving">Automatic</string>
+    <string name="title_manual_driving">Manual</string>
+    <string name="title_checkpoint_path">Checkpoint</string>
+    <string name="buttonStop">STOP</string>
+    <string name="backFirstPoint">Go Back</string>
 </resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_automatic_driving"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_automatic_driving" />
+
+    <item
+        android:id="@+id/navigation_manual_driving"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/title_manual_driving" />
+
+    <item
+        android:id="@+id/navigation_checkpoint_path"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/title_checkpoint_path" />
+
+</menu>
